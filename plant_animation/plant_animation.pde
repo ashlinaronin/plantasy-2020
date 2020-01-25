@@ -2,6 +2,8 @@ import processing.serial.*;
 import processing.video.*;
 //import gohai.glvideo.*; // needed for pi?
 
+final int MAX_KNOB_RANGE = 255;
+
 Serial myPort;
 String val;
 Movie myMovie;
@@ -26,7 +28,7 @@ void draw()
     float rate = Float.valueOf(val);
     println(val);
     float duration = myMovie.duration();
-    float where = map(rate, 0, 1023, 0, duration);
+    float where = map(rate, 0, MAX_KNOB_RANGE, 0, duration);
     myMovie.jump(where);
   } 
 

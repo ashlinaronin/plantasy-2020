@@ -22,19 +22,15 @@ void setup() {
 
 void loop() {
   degrees = getDegrees();
-  Serial.print("The angle between the mark and the starting position:");
-  Serial.println(degrees);
 
   // map to output range
   speed = map(degrees, 0, FULL_ANGLE, 0, 255);
-  Serial.print("The fan speed:");
-  Serial.println(speed);
   controlFan(speed);
 
   // send value from knob over serial to processing
-  Serial.println(knobValue);
+  Serial.println(speed);
 
-  delay(100);
+  delay(250);
 }
 
 void controlFan(int speed) {
