@@ -1,4 +1,5 @@
 /*macro definitions of Rotary angle sensor and LED pin*/
+/* borrowed from https://github.com/Seeed-Studio/Rotary_Angle_Sensor/blob/master/examples/ControlLEDBrightness/ControlLEDBrightness.ino */
 #define ROTARY_ANGLE_SENSOR A0
 #define LED 3 //the Grove - LED is connected to D3 of Arduino
 #define ADC_REF 5 //reference voltage of ADC is 5v.If the Vcc switch on the seeeduino
@@ -10,6 +11,8 @@
 #define KNOB_READ_PIN 14
 
 int knobValue;
+int degrees;
+int speed;
 
 void setup() {
   Serial.begin(9600);
@@ -18,12 +21,12 @@ void setup() {
 }
 
 void loop() {
-  int degrees = getDegrees();
+  degrees = getDegrees();
   Serial.print("The angle between the mark and the starting position:");
   Serial.println(degrees);
 
   // map to output range
-  int speed = map(degrees, 0, FULL_ANGLE, 0, 255);
+  speed = map(degrees, 0, FULL_ANGLE, 0, 255);
   Serial.print("The fan speed:");
   Serial.println(speed);
   controlFan(speed);
@@ -39,13 +42,12 @@ void controlFan(int speed) {
 }
 
 /************************************************************************/
-/*Function: Get the angle between the mark and the starting position  */
-/*Parameter:-void                           */
-/*Return: -int,the range of degrees is 0~300              */
+/* Function: Get the angle between the mark and the starting position   */
+/* Parameter: void                                                      */
+/* Return: int, the range of degrees is 0~300                           */
 int getDegrees()
 {
   int sensor_value = analogRead(ROTARY_ANGLE_SENSOR);
   float voltage = (float)sensor_value * ADC_REF / 1023;
-  float degrees = (voltage * FULL_ANGLE) / GROVE_VCC;
-  return degrees;
+  return (voltage * FULL_ANGLE) / GROVE_VCC;
 }
