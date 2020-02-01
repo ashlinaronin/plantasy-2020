@@ -10,6 +10,7 @@ final String MOVIE_FILE_NAME = "plant-timelapse.mp4";
 Serial myPort;
 String val;
 Movie myMovie;
+
 Float timeToJump;
 
 void setup()

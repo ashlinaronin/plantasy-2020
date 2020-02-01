@@ -35,7 +35,7 @@ void loop() {
   // send value from knob over serial to processing
   Serial.println(speed);
 
-  delay(250);
+  delay(50);
 }
 
 void controlFan(int speed) {
