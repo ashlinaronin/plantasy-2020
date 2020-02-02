@@ -1,6 +1,5 @@
 import processing.serial.*;
 import processing.video.*;
-//import gohai.glvideo.*; // needed for pi?
 
 final int MAX_KNOB_RANGE = 255;
 final String PORT_NAME = "/dev/tty.usbmodem6766581"; // on mac

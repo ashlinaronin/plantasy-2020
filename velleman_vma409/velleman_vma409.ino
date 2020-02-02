@@ -14,11 +14,11 @@ void setup() {
 }
 
 void loop() {
-  int deg = getMappedDegrees();
+  int deg = getDegrees();
   Serial.println(deg);
   
   setFanSpeed(deg);
-  delay(20);
+  delay(250);
 }
 
 
