@@ -15,7 +15,7 @@ Float timeToJump;
 void setup()
 {
   printArray(Serial.list());
-  myPort = new Serial(this, PORT_NAME, 9600);
+  myPort = new Serial(this, PORT_NAME);
   size(640, 480);
   background(0);
   myMovie = new Movie(this, MOVIE_FILE_NAME);

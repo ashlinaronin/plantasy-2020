@@ -5,18 +5,17 @@
 #define ADC_REF 5 // reference voltage of ADC is 5v
 #define GROVE_VCC 5 // VCC of the grove interface is normally 5v
 
-#define KNOB_READ_PIN 14 // read the value from the knob
+#define KNOB_READ_PIN A0 // read the value from the knob
 #define FAN_SPEED_PIN 6 // pwm output to the motor driver (ENA) speed input
 
 void setup() {
   //pinMode(KNOB_READ_PIN, INPUT);
   //pinMode(FAN_SPEED_PIN, OUTPUT);
   Serial.begin(9600);
-  Serial.println("hello from teensy");
 }
 
 void loop() {
-  int deg = getDegrees();
+  int deg = getMappedDegrees();
   Serial.println(deg);
   
   setFanSpeed(deg);
